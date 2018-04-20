@@ -40,3 +40,30 @@
 # Extension
 # Use the lots_of_words.txt file to test your code.
 # Now order the words that can be made by length.
+
+
+
+def can_make_word(word)
+
+  all_blocks = [['B','O'], ['X','K'], ['D','Q'], ['C','P'], ['N','A'], ['G','T'], ['R','E'], ['T','G'], ['Q','D'], ['F','S'], ['J','W'], ['H','U'], ['V','I'], ['A','N'], ['E','R'], ['F','S'], ['L','Y'], ['P','C'], ['Z','M']]
+
+  letters = word.scan /\w/
+
+  block_used = Array.new
+
+  letters.each do |letter|
+    all_blocks.each_with_index do |pair, index|
+      if pair.include?(letter)
+        if block_used.include?(index)
+          return false
+        end
+        block_used.push(index)
+      end
+    end
+  end
+
+  return true
+
+end
+
+puts can_make_word("BOUGHT")
