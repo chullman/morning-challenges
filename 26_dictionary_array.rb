@@ -24,5 +24,29 @@
 #
 
 class Dictionary
-  # Your code here
+
+  attr_reader :words_array
+
+  def initialize
+    @words_array = Array.new
+  end
+
+  def add_word(word, definition)
+    @words_array.push(word)
+    @words_array.push(definition)
+  end
+
+  def lookup(word)
+    @words_array.each_with_index do |word_in_array, index|
+      if (word_in_array == word)
+        return @words_array[index+1]
+      end
+    end
+    return nil
+  end
+
+  def total_words
+    return @words_array.length / 2
+  end
+
 end
